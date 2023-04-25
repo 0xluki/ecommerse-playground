@@ -7,7 +7,7 @@ import Register from "./Components/Register/Register";
 import Notfound from "./Components/Notfound/Notfound";
 import Cart from "./Components/Cart/Cart";
 import ProductList from "./Components/ProductList/ProductList";
-// import ProductDetails from "./Components/ProductDetails/ProductDetails";
+import ProductDetails from "./Components/ProductDetails/ProductDetails";
 
 function App() {
   let router = createBrowserRouter([
@@ -42,6 +42,10 @@ function App() {
         {
           path: "*",
           element: <Notfound />,
+        },
+        {
+          path: "product/:id",
+          element: <ProductDetails />,
         },
       ],
     },
