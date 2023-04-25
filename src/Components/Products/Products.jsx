@@ -1,32 +1,47 @@
-// import React, { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./Products.module.css";
-import { popularProducts } from "../../data";
-// import axios from "axios";
+// import { popularProducts } from "../../data";
+import axios from "axios";
 
-export default function Products(cat, filters, sort) {
-  // // console.log(cat, filters, sort);
-  // const [products, setProducts] = useState([]);
-  // // const [filteredProducts, setFilteredProducts] = useState([]);
+export default function Products({ cat, filters, sort }) {
+  // console.log(cat, filters, sort);
+  const [products, setProducts] = useState([]);
+  const [filteredProducts, setFilteredProducts] = useState([]);
 
-  // async function getProducts() {
-  //   try {
-  //     const response = await axios.get("http://localhost:5000/api/products");
-  //     // console.log(response);
-  //     setProducts(response);
-  //   } catch (error) {
-  //     console.log(error);
-  //   }
-  // }
+  useEffect(() => {
+    const getProducts = async () => {
+      try {
+        // console.log(cat);
+        const response = await axios.get(
+          cat
+            ? `http://localhost:5000/api/products?category=${cat}`
+            : "http://localhost:5000/api/products/"
+        );
+        console.log(response);
+        setProducts(response.data);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    getProducts();
+  }, [cat]);
 
-  // useEffect(() => {
-  //   getProducts();
-  // }, [cat]);
+  useEffect(() => {
+    cat &&
+      setFilteredProducts(
+        products.filter((item) =>
+          Object.entries(filters).every(([key, value]) =>
+            item[key].includes(value)
+          )
+        )
+      );
+  }, [cat, filters, products]);
 
   return (
     <>
       <div className="container-fluid">
         <div className="row px-3">
-          {popularProducts.map((product) => {
+          {filteredProducts.map((product) => {
             return (
               <>
                 <div key={product.id} className={`col-md-3 col-sm-6 px-2 py-3`}>
