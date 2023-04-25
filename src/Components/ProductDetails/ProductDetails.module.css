@@ -1,0 +1,43 @@
+.color {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  -ms-border-radius: 50%;
+  -o-border-radius: 50%;
+  cursor: pointer;
+}
+.color1 {
+  background-color: black;
+}
+.color2 {
+  background-color: darkblue;
+}
+.color3 {
+  background-color: grey;
+}
+.amount {
+  border: 1px solid teal;
+  border-radius: 15px;
+  -webkit-border-radius: 15px;
+  -moz-border-radius: 15px;
+  -ms-border-radius: 15px;
+  -o-border-radius: 15px;
+}
+.button {
+  font-weight: 500;
+  padding: 10px 15px;
+  border: 1px solid teal;
+  background-color: transparent;
+  transition: all 0.5s ease;
+  -webkit-transition: all 0.5s ease;
+  -moz-transition: all 0.5s ease;
+  -ms-transition: all 0.5s ease;
+  -o-transition: all 0.5s ease;
+}
+.button:hover {
+  color: white;
+  background-color: rgba(0, 128, 128, 0.7);
+  border-color: rgba(0, 128, 128, 0.7);
+}
