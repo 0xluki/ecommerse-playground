@@ -17,7 +17,7 @@ export default function Products({ cat, filters, sort }) {
             ? `http://localhost:5000/api/products?category=${cat}`
             : "http://localhost:5000/api/products/"
         );
-        console.log(response);
+        // console.log(response);
         setProducts(response.data);
       } catch (error) {
         console.log(error);

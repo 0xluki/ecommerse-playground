@@ -25,8 +25,8 @@ export default function Register() {
         setisLoading(false);
         setmessageError(`${error.response.statusText}`);
       });
-    // console.log(response);
-    if (response.statusText === "Created") {
+    console.log(response);
+    if (response.status === 201) {
       setisLoading(false);
       navigate("/login");
     }
