@@ -1,11 +1,11 @@
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
-import "./App.css";
 import Layout from "./Components/Layout/Layout";
 import Home from "./Components/Home/Home";
 import Login from "./Components/Login/Login";
 import Register from "./Components/Register/Register";
 import Notfound from "./Components/Notfound/Notfound";
 import Cart from "./Components/Cart/Cart";
+import Success from "./Components/Success/Success";
 import ProductList from "./Components/ProductList/ProductList";
 import ProductDetails from "./Components/ProductDetails/ProductDetails";
 import jwtDecode from "jwt-decode";
@@ -50,6 +50,10 @@ function App() {
         {
           path: "product/:id",
           element: <ProductDetails />,
+        },
+        {
+          path: "success",
+          element: <Success />,
         },
         {
           path: "login",

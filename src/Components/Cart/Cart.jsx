@@ -1,18 +1,37 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./Cart.module.css";
 import { useSelector } from "react-redux";
+import StripeCheckout from "react-stripe-checkout";
+import { userRequest } from "../../requestMethod";
+import { useNavigate } from "react-router-dom";
 
 export default function Cart() {
   const cart = useSelector((state) => state.cart);
-  // let quantity = useSelector((state) => state.cart.products.quantity);
+  const KEY = process.env.REACT_APP_STRIPE;
+  const [stripeToken, setStripeToken] = useState(null);
+  const navigate = useNavigate();
 
-  // const handleQuantity = (type) => {
-  //   if (type === "inc") {
-  //     quantity += 1;
-  //   } else {
-  //     quantity -= 1;
-  //   }
-  // };
+  const onToken = (token) => {
+    setStripeToken(token);
+  };
+  // console.log(stripeToken);
+
+  useEffect(() => {
+    const makeRequest = async () => {
+      try {
+        const res = await userRequest.post("/checkout/payment", {
+          tokenId: stripeToken.id,
+          amount: cart.total * 100,
+        });
+        console.log(res);
+        navigate("/success", {
+          stripeData: res.data,
+          products: cart,
+        });
+      } catch {}
+    };
+    stripeToken && cart.total >= 1 && makeRequest();
+  }, [stripeToken, cart.total, navigate, cart]);
 
   return (
     <>
@@ -104,7 +123,19 @@ export default function Cart() {
                 <span>Total:</span>
                 <span>{cart.total}</span>
               </div>
-              <button className={`${styles.button2}`}>CHECKOUT NOW</button>
+              <StripeCheckout
+                name="Shop"
+                image="https://avatars.githubusercontent.com/u/1486366?v=4"
+                billingAddress
+                shippingAddress
+                description={`Your total is $${cart.total}`}
+                amount={cart.total * 100}
+                token={onToken}
+                stripeKey={KEY}
+              >
+                <button className={`${styles.button2}`}>CHECKOUT NOW</button>
+              </StripeCheckout>
+              {/* <button className={`${styles.button2}`}>CHECKOUT NOW</button> */}
             </div>
           </div>
         </div>

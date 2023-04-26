@@ -8,7 +8,7 @@ export default function Navbar({ userData, logout }) {
 
   return (
     <>
-      <nav className="navbar  navbar-expand-lg bg-body-tertiary">
+      <nav className="navbar navbar-expand-lg bg-body-tertiary">
         <div className="container-fluid px-4">
           <Link className="navbar-brand fw-bolder" to="home">
             E-commerce
