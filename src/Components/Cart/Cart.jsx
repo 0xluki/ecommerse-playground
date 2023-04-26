@@ -10,6 +10,7 @@ export default function Cart() {
   const KEY = process.env.REACT_APP_STRIPE;
   const [stripeToken, setStripeToken] = useState(null);
   const navigate = useNavigate();
+  const amount = Math.round(cart.total * 100);
 
   const onToken = (token) => {
     setStripeToken(token);
@@ -19,19 +20,25 @@ export default function Cart() {
   useEffect(() => {
     const makeRequest = async () => {
       try {
-        const res = await userRequest.post("/checkout/payment", {
-          tokenId: stripeToken.id,
-          amount: cart.total * 100,
-        });
-        console.log(res);
+        const res = await userRequest.post(
+          "http://localhost:5000/api/checkout/payment",
+          {
+            tokenId: stripeToken.id,
+            amount: amount,
+          }
+        );
+        console.log(res.data);
         navigate("/success", {
           stripeData: res.data,
           products: cart,
         });
-      } catch {}
+      } catch (err) {
+        console.log(err);
+      }
     };
-    stripeToken && cart.total >= 1 && makeRequest();
-  }, [stripeToken, cart.total, navigate, cart]);
+    stripeToken && makeRequest();
+    // stripeToken && cart.total >= 1 && makeRequest();
+  }, [stripeToken, amount, navigate, cart]);
 
   return (
     <>

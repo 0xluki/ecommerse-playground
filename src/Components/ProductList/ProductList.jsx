@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 // import styles from "./ProductList.module.css";
-import Announcement from "../Announcement/Announcement";
+// import Announcement from "../Announcement/Announcement";
 import Products from "../Products/Products";
 import { useLocation } from "react-router-dom";
 
@@ -21,7 +21,7 @@ export default function ProductList() {
 
   return (
     <>
-      <Announcement />
+      {/* <Announcement /> */}
       <div className="container-fluid">
         <div className="row p-3">
           {/* <h1 className="mb-2">Dresess</h1> */}
