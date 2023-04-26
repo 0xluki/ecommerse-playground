@@ -16,7 +16,7 @@
 .color {
   width: 20px;
   height: 20px;
-  background-color: rgb(7, 6, 42);
+  /* background-color: rgb(7, 6, 42); */
   border-radius: 50%;
   -webkit-border-radius: 50%;
   -moz-border-radius: 50%;

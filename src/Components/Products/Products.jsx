@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import styles from "./Products.module.css";
 // import { popularProducts } from "../../data";
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 export default function Products({ cat, filters, sort }) {
   // console.log(cat, filters, sort);
@@ -15,7 +16,7 @@ export default function Products({ cat, filters, sort }) {
         const response = await axios.get(
           cat
             ? `http://localhost:5000/api/products?category=${cat}`
-            : "http://localhost:5000/api/products/"
+            : "http://localhost:5000/api/products"
         );
         // console.log(response);
         setProducts(response.data);
@@ -57,9 +58,14 @@ export default function Products({ cat, filters, sort }) {
                         <div className={`${styles.icon}`}>
                           <i class="fa-solid fa-cart-shopping"></i>
                         </div>
-                        <div className={`${styles.icon}  mx-3`}>
-                          <i class="fa-solid fa-magnifying-glass"></i>
-                        </div>
+                        <Link
+                          className={`${styles.link}`}
+                          to={`/product/${product._id}`}
+                        >
+                          <div className={`${styles.icon}  mx-3`}>
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                          </div>
+                        </Link>
                         <div className={`${styles.icon}`}>
                           <i class="fa-regular fa-heart"></i>
                         </div>
