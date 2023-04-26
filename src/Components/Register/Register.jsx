@@ -23,7 +23,7 @@ export default function Register() {
       .catch((error) => {
         console.log(error);
         setisLoading(false);
-        setmessageError(`${error.response.statusText}`);
+        setmessageError(`${error.message}`);
       });
     console.log(response);
     if (response.status === 201) {

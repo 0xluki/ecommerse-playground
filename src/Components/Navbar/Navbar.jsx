@@ -47,7 +47,7 @@ export default function Navbar({ userData, logout }) {
                   </i>
                 </Link>
               </li>
-              <li className="nav-item ms-md-3 position-relative">
+              <li className="nav-item ms-lg-3 position-relative">
                 <Link onClick={logout} className="nav-link" to="login">
                   SIGN OUT
                 </Link>

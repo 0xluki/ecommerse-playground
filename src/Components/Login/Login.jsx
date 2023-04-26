@@ -11,9 +11,10 @@ export default function Login() {
   let [messageError, setmessageError] = useState("");
 
   async function handleLogin(values) {
+    // console.log(values);
     setisLoading(true);
     let response = await axios
-      .post("http://localhost:5000/api/auth/register", values)
+      .post("http://localhost:5000/api/auth/login", values)
       .catch((error) => {
         console.log(error);
         setisLoading(false);
