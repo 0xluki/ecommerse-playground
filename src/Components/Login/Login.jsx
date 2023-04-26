@@ -21,8 +21,8 @@ export default function Login() {
         setmessageError(`${error.response.statusText}`);
       });
     console.log(response);
-    if (response.status === 201) {
-      // localStorage.setItem("Token", response.token);
+    if (response.status === 200) {
+      localStorage.setItem("Token", response.data.accessToken);
       setisLoading(false);
       navigate("/home");
     }

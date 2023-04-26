@@ -16,7 +16,7 @@ export default function Register() {
       email: values.email,
       password: values.password,
     };
-    // console.log(body);
+    console.log(body);
     setisLoading(true);
     let response = await axios
       .post("http://localhost:5000/api/auth/register", body)
