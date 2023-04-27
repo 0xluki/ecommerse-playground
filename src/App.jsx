@@ -48,7 +48,7 @@ function App() {
           element: <ProductList />,
         },
         {
-          path: "productList/",
+          path: "productList",
           element: <ProductList />,
         },
         {

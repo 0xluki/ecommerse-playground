@@ -1,6 +1,6 @@
-.item {
+/* .item {
   background-color: #f5fbfd;
-}
+} */
 .item:hover .layer {
   opacity: 1;
 }

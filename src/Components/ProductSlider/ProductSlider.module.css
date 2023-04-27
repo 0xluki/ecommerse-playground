@@ -1,0 +1,81 @@
+/* .item {
+  background-color: #f5fbfd;
+} */
+.item:hover .layer {
+  opacity: 1;
+}
+.img {
+  height: 280px;
+  z-index: 222;
+}
+.circle {
+  width: 200px;
+  height: 200px;
+  background-color: white;
+  border-radius: 50%;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  -ms-border-radius: 50%;
+  -o-border-radius: 50%;
+  position: absolute;
+  top: 20%;
+  left: 12%;
+  z-index: 0;
+}
+.layer {
+  position: absolute;
+  opacity: 0;
+  top: 0%;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(0, 0, 0, 0.2);
+  z-index: 999;
+  transition: all 1s ease;
+  -webkit-transition: all 1s ease;
+  -moz-transition: all 1s ease;
+  -ms-transition: all 1s ease;
+  -o-transition: all 1s ease;
+}
+.icon {
+  cursor: pointer;
+  background-color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  -ms-border-radius: 50%;
+  -o-border-radius: 50%;
+  transition: all 0.5s ease;
+  -webkit-transition: all 0.5s ease;
+  -moz-transition: all 0.5s ease;
+  -ms-transition: all 0.5s ease;
+  -o-transition: all 0.5s ease;
+}
+.icon:hover {
+  color: black;
+  background-color: #e9f5f5;
+  transform: scale(1.1);
+  -webkit-transform: scale(1.1);
+  -moz-transform: scale(1.1);
+  -ms-transform: scale(1.1);
+  -o-transform: scale(1.1);
+}
+
+.link {
+  text-decoration: none;
+  color: black;
+}
+
+.button {
+  background-color: white;
+  border: none;
+  padding: 10px 15px;
+  box-shadow: 1px 1px 5px rgb(168, 167, 167);
+}
