@@ -49,7 +49,7 @@ export default function Products() {
                           />
                         </div>
                         <div className="text-center mt-2">
-                          <p>{product.title}</p>
+                          <p className="m-0 mb-2">{product.title}</p>
                           <p>{product.price}</p>
                         </div>
                       </div>
