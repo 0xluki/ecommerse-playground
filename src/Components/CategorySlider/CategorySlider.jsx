@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import "./CategorySlider.module.css";
 import Slider from "react-slick";
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 export default function CategorySlider() {
   const [categories, setCategories] = useState([]);
@@ -34,17 +35,22 @@ export default function CategorySlider() {
             return (
               <>
                 <div className="row py-3">
-                  <div key={category._id}>
-                    <img
-                      className="w-100"
-                      height={200}
-                      src={category.img}
-                      alt=""
-                    />
-                    <h2 className="h6 pt-2 text-center">
-                      {category.categoryType}
-                    </h2>
-                  </div>
+                  <Link
+                    className="link"
+                    to={`/productList/${category.categoryType}`}
+                  >
+                    <div key={category._id}>
+                      <img
+                        className="w-100"
+                        height={200}
+                        src={category.img}
+                        alt=""
+                      />
+                      <h2 className="h6 pt-2 text-center">
+                        {category.categoryType}
+                      </h2>
+                    </div>
+                  </Link>
                 </div>
               </>
             );

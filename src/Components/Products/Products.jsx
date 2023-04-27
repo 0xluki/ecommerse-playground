@@ -15,11 +15,15 @@ export default function Products({ cat, filters, sort }) {
         // console.log(cat);
         const response = await axios.get(
           cat
-            ? `http://localhost:5000/api/products?category=${cat}`
+            ? `http://localhost:5000/api/products/category/${cat}`
             : "http://localhost:5000/api/products"
         );
-        // console.log(response);
-        setProducts(response.data);
+        console.log(response);
+        if (cat) {
+          setProducts(response.data.products);
+        } else {
+          setProducts(response.data);
+        }
       } catch (error) {
         console.log(error);
       }
@@ -28,14 +32,13 @@ export default function Products({ cat, filters, sort }) {
   }, [cat]);
 
   useEffect(() => {
-    cat &&
-      setFilteredProducts(
-        products.filter((item) =>
-          Object.entries(filters).every(([key, value]) =>
-            item[key].includes(value)
-          )
+    setFilteredProducts(
+      products.filter((item) =>
+        Object.entries(filters).every(([key, value]) =>
+          item[key].includes(value)
         )
-      );
+      )
+    );
   }, [cat, filters, products]);
 
   return (

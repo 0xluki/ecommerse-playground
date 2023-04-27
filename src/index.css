@@ -6,6 +6,13 @@
 body {
   font-family: var(--font-family) !important;
 }
+.link {
+  text-decoration: none;
+  color: black;
+}
+.link:hover {
+  color: black;
+}
 .rating-color {
   color: #ffc908;
 }
