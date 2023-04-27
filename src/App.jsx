@@ -48,6 +48,10 @@ function App() {
           element: <ProductList />,
         },
         {
+          path: "productList/",
+          element: <ProductList />,
+        },
+        {
           path: "product/:id",
           element: <ProductDetails />,
         },
