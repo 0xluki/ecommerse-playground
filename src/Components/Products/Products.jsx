@@ -45,21 +45,6 @@ export default function Products({ cat, sort }) {
     }
   }, [sort]);
 
-  // useEffect(() => {
-  //   const getProducts = async () => {
-  //     try {
-  //       const response = await axios.get(
-  //         `http://localhost:5000/api/products?sort=${sort}`
-  //       );
-  //       console.log(response);
-  //       setProducts(response.data.products);
-  //     } catch (error) {
-  //       console.log(error);
-  //     }
-  //   };
-  //   sort === ('asc' || 'desc')&& getProducts();
-  // }, [sort]);
-
   return (
     <>
       <div className="container-fluid">
@@ -67,30 +52,35 @@ export default function Products({ cat, sort }) {
           {products.map((product) => {
             return (
               <>
-                <div key={product.id} className={`col-md-3 col-sm-6 px-2 py-3`}>
-                  <div className={`position-relative ${styles.item}`}>
-                    <div className={`${styles.circle}`}></div>
-                    <div className={`position-relative py-4`}>
-                      <img
-                        className={`${styles.img} w-100`}
-                        src={product.img}
-                        alt=""
-                      />
-                      <div className={`${styles.layer} `}>
-                        <div className={`${styles.icon}`}>
-                          <i class="fa-solid fa-cart-shopping"></i>
+                <div key={product.id} className={`col-md-3 col-sm-6 px-2 py-2`}>
+                  <div className={`position-relative ${styles.item} py-2`}>
+                    <div>
+                      <div>
+                        <img
+                          className={`${styles.img} w-100`}
+                          src={product.img}
+                          alt=""
+                        />
+                      </div>
+                      <div className="text-center mt-2">
+                        <p>{product.title}</p>
+                        <p>{product.price}</p>
+                      </div>
+                    </div>
+                    <div className={`${styles.layer} `}>
+                      <div className={`${styles.icon}`}>
+                        <i class="fa-solid fa-cart-shopping"></i>
+                      </div>
+                      <Link
+                        className={`${styles.link}`}
+                        to={`/product/${product._id}`}
+                      >
+                        <div className={`${styles.icon}  mx-3`}>
+                          <i class="fa-solid fa-magnifying-glass"></i>
                         </div>
-                        <Link
-                          className={`${styles.link}`}
-                          to={`/product/${product._id}`}
-                        >
-                          <div className={`${styles.icon}  mx-3`}>
-                            <i class="fa-solid fa-magnifying-glass"></i>
-                          </div>
-                        </Link>
-                        <div className={`${styles.icon}`}>
-                          <i class="fa-regular fa-heart"></i>
-                        </div>
+                      </Link>
+                      <div className={`${styles.icon}`}>
+                        <i class="fa-regular fa-heart"></i>
                       </div>
                     </div>
                   </div>

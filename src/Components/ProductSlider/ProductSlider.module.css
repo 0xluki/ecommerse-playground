@@ -8,20 +8,6 @@
   height: 280px;
   z-index: 222;
 }
-.circle {
-  width: 200px;
-  height: 200px;
-  background-color: white;
-  border-radius: 50%;
-  -webkit-border-radius: 50%;
-  -moz-border-radius: 50%;
-  -ms-border-radius: 50%;
-  -o-border-radius: 50%;
-  position: absolute;
-  top: 20%;
-  left: 12%;
-  z-index: 0;
-}
 .layer {
   position: absolute;
   opacity: 0;

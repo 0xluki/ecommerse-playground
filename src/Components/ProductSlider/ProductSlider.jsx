@@ -19,8 +19,7 @@ export default function Products() {
       }
     };
     getProducts();
-  });
-  console.log(products);
+  }, []);
 
   const settings = {
     dots: true,
@@ -38,31 +37,36 @@ export default function Products() {
           {products.map((product) => {
             return (
               <>
-                <div className="row px-3">
+                <div className="row px-3 py-4">
                   <div key={product.id}>
-                    <div className={`position-relative ${styles.item}`}>
-                      <div className={`${styles.circle}`}></div>
-                      <div className={`position-relative py-4`}>
-                        <img
-                          className={`${styles.img} w-100`}
-                          src={product.img}
-                          alt=""
-                        />
-                        <div className={`${styles.layer} `}>
-                          <div className={`${styles.icon}`}>
-                            <i class="fa-solid fa-cart-shopping"></i>
+                    <div className={`position-relative ${styles.item} py-2`}>
+                      <div>
+                        <div>
+                          <img
+                            className={`${styles.img} w-100`}
+                            src={product.img}
+                            alt=""
+                          />
+                        </div>
+                        <div className="text-center mt-2">
+                          <p>{product.title}</p>
+                          <p>{product.price}</p>
+                        </div>
+                      </div>
+                      <div className={`${styles.layer} `}>
+                        <div className={`${styles.icon}`}>
+                          <i class="fa-solid fa-cart-shopping"></i>
+                        </div>
+                        <Link
+                          className={`${styles.link}`}
+                          to={`/product/${product._id}`}
+                        >
+                          <div className={`${styles.icon}  mx-3`}>
+                            <i class="fa-solid fa-magnifying-glass"></i>
                           </div>
-                          <Link
-                            className={`${styles.link}`}
-                            to={`/product/${product._id}`}
-                          >
-                            <div className={`${styles.icon}  mx-3`}>
-                              <i class="fa-solid fa-magnifying-glass"></i>
-                            </div>
-                          </Link>
-                          <div className={`${styles.icon}`}>
-                            <i class="fa-regular fa-heart"></i>
-                          </div>
+                        </Link>
+                        <div className={`${styles.icon}`}>
+                          <i class="fa-regular fa-heart"></i>
                         </div>
                       </div>
                     </div>
@@ -72,7 +76,7 @@ export default function Products() {
             );
           })}
         </Slider>
-        <div className="d-flex justify-content-end pt-3">
+        <div className="d-flex justify-content-end pt-5 pt-md-4">
           <Link to={"/productList"}>
             {" "}
             <button className={`${styles.button}`}>Browse All</button>
