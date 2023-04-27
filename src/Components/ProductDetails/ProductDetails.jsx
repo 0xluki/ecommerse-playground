@@ -53,7 +53,7 @@ export default function ProductDetails() {
   return (
     <>
       <Announcement />
-      <div className="container">
+      <div className="container py-5">
         <div className="row py-5 d-flex align-items-center justify-content-center">
           <div className="col-md-4">
             <Slider {...settings}>
@@ -70,30 +70,6 @@ export default function ProductDetails() {
             <h4 className="fw-bold">{product.title}</h4>
             <p>{product.desc}</p>
             <p className="fs-3">{product.price}</p>
-            {/* <div className="w-75 d-flex justify-content-between align-items-center mx-auto mx-md-0">
-              <div className="d-flex justify-content-center align-items-center">
-                <span className="fw-bold me-3">Colors</span>
-                {product.color?.map((c) => (
-                  <p
-                    key={c}
-                    className={`${styles.color} p-0 m-0 me-2`}
-                    style={{ backgroundColor: `${c}` }}
-                    onClick={() => setColor(c)}
-                  ></p>
-                ))}
-              </div>
-              <div>
-                <span className="fw-bold me-3">Size</span>
-                <select
-                  className="p-md-2 p-1"
-                  onChange={(e) => setSize(e.target.value)}
-                >
-                  {product.size?.map((s) => (
-                    <option>{s}</option>
-                  ))}
-                </select>
-              </div>
-            </div> */}
             <div className="mt-3 w-75 d-flex align-items-center justify-content-between  mx-auto mx-md-0">
               <div className="d-flex align-items-center ">
                 <button
