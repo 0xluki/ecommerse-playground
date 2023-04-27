@@ -7,25 +7,24 @@ import { useLocation } from "react-router-dom";
 export default function ProductList() {
   const location = useLocation();
   const category = location.pathname.split("/")[2];
-  const [filters, setFilters] = useState({});
+  // const [filters, setFilters] = useState({});
   const [sort, setSort] = useState("newest");
 
-  const handleFilters = (e) => {
-    const value = e.target.value;
-    setFilters({
-      ...filters,
-      [e.target.name]: value,
-    });
-  };
+  // const handleFilters = (e) => {
+  //   const value = e.target.value;
+  //   setFilters({
+  //     ...filters,
+  //     [e.target.name]: value,
+  //   });
+  // };
   // console.log(filters, sort);
 
   return (
     <>
       {/* <Announcement /> */}
-      <div className="container-fluid">
+      <div className="container-fluid mt-5">
         <div className="row p-3">
-          {/* <h1 className="mb-2">Dresess</h1> */}
-          <div className="d-flex justify-content-between">
+          {/* <div className="d-flex justify-content-between">
             <div className="col-md-3">
               <span className={`font18 fw-bold me-2`}>Filter Products:</span>
               <select
@@ -66,10 +65,23 @@ export default function ProductList() {
                 <option value="desc"> Price (desc)</option>
               </select>
             </div>
+          </div> */}
+          <div className="col-md-3">
+            <span className={`font18 fw-bold me-2`}>Sort Products:</span>
+            <select
+              className="p-md-2 p-1 "
+              onChange={(e) => setSort(e.target.value)}
+            >
+              <option selected value="newest">
+                Newest
+              </option>
+              <option value="asc"> Price (asc)</option>
+              <option value="desc"> Price (desc)</option>
+            </select>
           </div>
         </div>
       </div>
-      <Products cat={category} filters={filters} sort={sort} />
+      <Products cat={category} sort={sort} />
     </>
   );
 }

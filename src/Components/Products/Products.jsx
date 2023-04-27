@@ -4,10 +4,10 @@ import styles from "./Products.module.css";
 import axios from "axios";
 import { Link } from "react-router-dom";
 
-export default function Products({ cat, filters, sort }) {
+export default function Products({ cat, sort }) {
   // console.log(cat, filters, sort);
   const [products, setProducts] = useState([]);
-  const [filteredProducts, setFilteredProducts] = useState([]);
+  // const [filteredProducts, setFilteredProducts] = useState([]);
 
   useEffect(() => {
     const getProducts = async () => {
@@ -30,22 +30,23 @@ export default function Products({ cat, filters, sort }) {
     };
     getProducts();
   }, [cat]);
+  console.log(products);
 
-  useEffect(() => {
-    setFilteredProducts(
-      products.filter((item) =>
-        Object.entries(filters).every(([key, value]) =>
-          item[key].includes(value)
-        )
-      )
-    );
-  }, [cat, filters, products]);
+  // useEffect(() => {
+  //     setFilteredProducts(
+  //       products.filter((item) =>
+  //         Object.entries(filters).every(([key, value]) =>
+  //           item[key].includes(value)
+  //         )
+  //       )
+  //     );
+  // }, [cat, filters, products]);
 
   return (
     <>
       <div className="container-fluid">
         <div className="row px-3">
-          {filteredProducts.map((product) => {
+          {products.map((product) => {
             return (
               <>
                 <div key={product.id} className={`col-md-3 col-sm-6 px-2 py-3`}>

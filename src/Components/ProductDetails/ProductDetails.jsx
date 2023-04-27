@@ -21,8 +21,6 @@ export default function ProductDetails() {
   const id = location.pathname.split("/")[2];
   const [product, setProduct] = useState({});
   const [quantity, setQuantity] = useState(1);
-  const [color, setColor] = useState("");
-  const [size, setSize] = useState("");
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -49,7 +47,7 @@ export default function ProductDetails() {
   };
 
   const handleClick = () => {
-    dispatch(addProduct({ ...product, quantity, color, size }));
+    dispatch(addProduct({ ...product, quantity }));
   };
 
   return (
@@ -72,7 +70,7 @@ export default function ProductDetails() {
             <h4 className="fw-bold">{product.title}</h4>
             <p>{product.desc}</p>
             <p className="fs-3">{product.price}</p>
-            <div className="w-75 d-flex justify-content-between align-items-center mx-auto mx-md-0">
+            {/* <div className="w-75 d-flex justify-content-between align-items-center mx-auto mx-md-0">
               <div className="d-flex justify-content-center align-items-center">
                 <span className="fw-bold me-3">Colors</span>
                 {product.color?.map((c) => (
@@ -95,8 +93,8 @@ export default function ProductDetails() {
                   ))}
                 </select>
               </div>
-            </div>
-            <div className="mt-4 w-75 d-flex align-items-center justify-content-between  mx-auto mx-md-0">
+            </div> */}
+            <div className="mt-3 w-75 d-flex align-items-center justify-content-between  mx-auto mx-md-0">
               <div className="d-flex align-items-center ">
                 <button
                   className="me-2 me-md-3 fs-5 border-0 bg-white"
