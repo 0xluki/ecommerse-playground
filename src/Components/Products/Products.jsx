@@ -30,17 +30,35 @@ export default function Products({ cat, sort }) {
     };
     getProducts();
   }, [cat]);
+
   console.log(products);
 
+  useEffect(() => {
+    if (sort === "newest") {
+      setProducts((prev) =>
+        [...prev].sort((a, b) => a.createdAt - b.createdAt)
+      );
+    } else if (sort === "asc") {
+      setProducts((prev) => [...prev].sort((a, b) => a.price - b.price));
+    } else {
+      setProducts((prev) => [...prev].sort((a, b) => b.price - a.price));
+    }
+  }, [sort]);
+
   // useEffect(() => {
-  //     setFilteredProducts(
-  //       products.filter((item) =>
-  //         Object.entries(filters).every(([key, value]) =>
-  //           item[key].includes(value)
-  //         )
-  //       )
-  //     );
-  // }, [cat, filters, products]);
+  //   const getProducts = async () => {
+  //     try {
+  //       const response = await axios.get(
+  //         `http://localhost:5000/api/products?sort=${sort}`
+  //       );
+  //       console.log(response);
+  //       setProducts(response.data.products);
+  //     } catch (error) {
+  //       console.log(error);
+  //     }
+  //   };
+  //   sort === ('asc' || 'desc')&& getProducts();
+  // }, [sort]);
 
   return (
     <>
