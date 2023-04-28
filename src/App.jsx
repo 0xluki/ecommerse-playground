@@ -10,6 +10,7 @@ import Success from "./Components/Success/Success";
 import ProductList from "./Components/ProductList/ProductList";
 import ProductDetails from "./Components/ProductDetails/ProductDetails";
 import ProtectedRoute from "./Components/ProtectedRoute/ProtectedRoute";
+import ProtectedRoute2 from "./Components/ProtectedRoute2/ProtectedRoute2";
 import jwtDecode from "jwt-decode";
 import { useEffect, useState } from "react";
 
@@ -79,11 +80,19 @@ function App() {
         },
         {
           path: "login",
-          element: <Login />,
+          element: (
+            <ProtectedRoute2>
+              <Login />
+            </ProtectedRoute2>
+          ),
         },
         {
           path: "register",
-          element: <Register />,
+          element: (
+            <ProtectedRoute2>
+              <Register />
+            </ProtectedRoute2>
+          ),
         },
         {
           path: "*",
