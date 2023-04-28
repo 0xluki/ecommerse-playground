@@ -6,7 +6,7 @@ import Announcement from "../Announcement/Announcement";
 import { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import axios from "axios";
-import { addProduct } from "../../Redux/cartRedux";
+import { addCart } from "../../Redux/cartRedux";
 import { useDispatch } from "react-redux";
 
 export default function ProductDetails() {
@@ -47,7 +47,7 @@ export default function ProductDetails() {
   };
 
   const handleClick = () => {
-    dispatch(addProduct({ ...product, quantity }));
+    dispatch(addCart({ ...product, quantity }));
   };
 
   return (

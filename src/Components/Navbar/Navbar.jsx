@@ -4,6 +4,9 @@ import { Link } from "react-router-dom";
 
 export default function Navbar({ userData, logout }) {
   const cartQuantity = useSelector((state) => state.cart.cartQuantity);
+  const wishlistQuantity = useSelector(
+    (state) => state.wishlist.wishlistQuantity
+  );
   // console.log(cartQuantity);
 
   return (
@@ -40,6 +43,17 @@ export default function Navbar({ userData, logout }) {
                       </i>
                     </Link>
                   </li>
+                  <li className="nav-item ">
+                    <Link className="nav-link " to="wihlist">
+                      <i className="fa-solid fa-heart position-relative">
+                        <span
+                          className={`font8 badge rounded-circle translate-middle position-absolute top-0 start-100 bg-danger`}
+                        >
+                          {wishlistQuantity}
+                        </span>
+                      </i>
+                    </Link>
+                  </li>
                   <li className="nav-item ms-lg-3 position-relative">
                     <Link onClick={logout} className="nav-link" to="login">
                       SIGN OUT
@@ -65,6 +79,17 @@ export default function Navbar({ userData, logout }) {
                           className={`font8 badge rounded-circle translate-middle position-absolute top-0 start-100 bg-danger`}
                         >
                           {cartQuantity}
+                        </span>
+                      </i>
+                    </Link>
+                  </li>
+                  <li className="nav-item ">
+                    <Link className="nav-link " to="wishlist">
+                      <i className="fa-solid fa-heart position-relative">
+                        <span
+                          className={`font8 badge rounded-circle translate-middle position-absolute top-0 start-100 bg-danger`}
+                        >
+                          {wishlistQuantity}
                         </span>
                       </i>
                     </Link>

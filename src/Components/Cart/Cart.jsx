@@ -3,14 +3,31 @@ import styles from "./Cart.module.css";
 import { useSelector } from "react-redux";
 import StripeCheckout from "react-stripe-checkout";
 import { userRequest } from "../../requestMethod";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
+// import { addProduct } from "../../Redux/cartRedux";
 
-export default function Cart() {
+export default function Cart({ userData }) {
   const cart = useSelector((state) => state.cart);
   const KEY = process.env.REACT_APP_STRIPE;
   const [stripeToken, setStripeToken] = useState(null);
   const navigate = useNavigate();
   const amount = Math.round(cart.total * 100);
+
+  const [quantity, setQuantity] = useState(1);
+  // const dispatch = useDispatch();
+
+  const handleQuantity = (type) => {
+    if (type === "inc") {
+      setQuantity(quantity + 1);
+      // dispatch(addProduct({ quantity }));
+    } else {
+      quantity > 1 && setQuantity(quantity - 1);
+    }
+  };
+
+  // const handleClick = () => {
+  //   dispatch(addProduct({ ...product, quantity }));
+  // };
 
   const onToken = (token) => {
     setStripeToken(token);
@@ -46,12 +63,14 @@ export default function Cart() {
         <div className="row p-3">
           <h4 className="fw-bold text-center"> YOUR CART</h4>
           <div className="py-3 d-flex align-items-center justify-content-between">
-            <button className={`${styles.button1}`}>CONTINUE SHOPPING</button>
-            <div>
+            <Link to={"/home"}>
+              <button className={`${styles.button1}`}>CONTINUE SHOPPING</button>
+            </Link>
+            {/* <div>
               <span className="me-3">Shopping Bag (2)</span>
               <span>Your Wishlist (0)</span>
             </div>
-            <button className={`${styles.button2}`}>CHECKOUT NOW</button>
+            <button className={`${styles.button2}`}>CHECKOUT NOW</button> */}
           </div>
         </div>
         <div className="row p-3">
@@ -70,26 +89,29 @@ export default function Cart() {
                     </div>
                     <div className="col-md-10 d-flex justify-content-between">
                       <div className=" d-flex flex-column justify-content-around">
-                        <h6 className="mb-2">
+                        {/* <h6 className="mb-1">
+                          <b>ID: </b>
+                          {product._id}
+                        </h6> */}
+                        <h6 className="mb-1">
                           <b>Product: </b>
                           {product.title}
                         </h6>
-                        <h6 className="mb-2">
-                          <b>ID: </b>
-                          {product._id}
+                        <h6 className="mb-1">
+                          <b>Product Category: </b>
+                          {product.category}
                         </h6>
-                        <p
-                          className={`${styles.color} p-0 m-0 mb-2`}
-                          style={{ backgroundColor: `${product.color}` }}
-                        ></p>
-                        <h6>
-                          <b>Size: </b>
-                          {product.size}
+                        <h6 className="">
+                          <b>Product Discription: </b>
+                          {product.desc}
                         </h6>
                       </div>
                       <div className="d-flex flex-column justify-content-center align-items-center">
                         <div className="d-flex align-items-center mb-3">
-                          <button className="me-3 fs-5 border-0 bg-white">
+                          <button
+                            onClick={() => handleQuantity("inc")}
+                            className="me-3 fs-5 border-0 bg-white"
+                          >
                             <i class="fa-solid fa-plus"></i>
                           </button>
                           <span
@@ -97,13 +119,16 @@ export default function Cart() {
                           >
                             {product.quantity}
                           </span>
-                          <button className="fs-5 border-0 bg-white">
+                          <button
+                            onClick={() => handleQuantity("dec")}
+                            className="fs-5 border-0 bg-white"
+                          >
                             <i class="fa-solid fa-minus"></i>
                           </button>
                         </div>
                         <div>
                           <h5 className="fw-bold">
-                            {product.price * product.quantity}
+                            {product.price * product.quantity}$
                           </h5>
                         </div>
                       </div>
@@ -130,19 +155,33 @@ export default function Cart() {
                 <span>Total:</span>
                 <span>{cart.total}</span>
               </div>
-              <StripeCheckout
-                name="Shop"
-                image="https://avatars.githubusercontent.com/u/1486366?v=4"
-                billingAddress
-                shippingAddress
-                description={`Your total is $${cart.total}`}
-                amount={cart.total * 100}
-                token={onToken}
-                stripeKey={KEY}
-              >
-                <button className={`${styles.button2}`}>CHECKOUT NOW</button>
-              </StripeCheckout>
-              {/* <button className={`${styles.button2}`}>CHECKOUT NOW</button> */}
+              {userData ? (
+                <>
+                  <StripeCheckout
+                    name="Shop"
+                    image="https://avatars.githubusercontent.com/u/1486366?v=4"
+                    billingAddress
+                    shippingAddress
+                    description={`Your total is $${cart.total}`}
+                    amount={cart.total * 100}
+                    token={onToken}
+                    stripeKey={KEY}
+                  >
+                    <button className={`${styles.button2}`}>
+                      CHECKOUT NOW
+                    </button>
+                  </StripeCheckout>
+                </>
+              ) : (
+                <>
+                  <Link to={"/login"}>
+                    {" "}
+                    <button className={`${styles.button2}`}>
+                      CHECKOUT NOW
+                    </button>
+                  </Link>
+                </>
+              )}
             </div>
           </div>
         </div>

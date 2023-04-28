@@ -8,7 +8,7 @@ const cartSlice = createSlice({
     total: 0,
   },
   reducers: {
-    addProduct: (state, action) => {
+    addCart: (state, action) => {
       // console.log(action.payload);
       state.cartQuantity += 1;
       state.products.push(action.payload);
@@ -17,5 +17,5 @@ const cartSlice = createSlice({
   },
 });
 
-export const { addProduct } = cartSlice.actions;
+export const { addCart } = cartSlice.actions;
 export const cartReducer = cartSlice.reducer;

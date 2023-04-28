@@ -3,16 +3,19 @@ import styles from "./ProductSlider.module.css";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import Slider from "react-slick";
+import { addWishlist } from "../../Redux/wishlistRedux";
+import { useDispatch } from "react-redux";
+import { addCart } from "../../Redux/cartRedux";
 
 export default function Products() {
   const [products, setProducts] = useState([]);
+  const dispatch = useDispatch();
 
   useEffect(() => {
     const getProducts = async () => {
       try {
-        // console.log(cat);
         const response = await axios.get("http://localhost:5000/api/products");
-        console.log(response);
+        // console.log(response);
         setProducts(response.data);
       } catch (error) {
         console.log(error);
@@ -20,6 +23,13 @@ export default function Products() {
     };
     getProducts();
   }, []);
+
+  const handleCartClick = (product) => {
+    dispatch(addCart({ ...product, quantity: 1 }));
+  };
+  const handleWishClick = (product) => {
+    dispatch(addWishlist({ ...product }));
+  };
 
   const settings = {
     dots: true,
@@ -54,19 +64,29 @@ export default function Products() {
                         </div>
                       </div>
                       <div className={`${styles.layer} `}>
-                        <div className={`${styles.icon}`}>
-                          <i class="fa-solid fa-cart-shopping"></i>
+                        <div
+                          className={`${styles.icon}`}
+                          onClick={() => {
+                            handleCartClick(product);
+                          }}
+                        >
+                          <i className="fa-solid fa-cart-shopping"></i>
                         </div>
                         <Link
                           className={`${styles.link}`}
                           to={`/product/${product._id}`}
                         >
-                          <div className={`${styles.icon}  mx-3`}>
-                            <i class="fa-solid fa-magnifying-glass"></i>
+                          <div className={`${styles.icon} mx-3`}>
+                            <i className="fa-solid fa-magnifying-glass"></i>
                           </div>
                         </Link>
-                        <div className={`${styles.icon}`}>
-                          <i class="fa-regular fa-heart"></i>
+                        <div
+                          className={`${styles.icon}`}
+                          onClick={() => {
+                            handleWishClick(product);
+                          }}
+                        >
+                          <i className="fa-regular fa-heart"></i>
                         </div>
                       </div>
                     </div>

@@ -23,6 +23,7 @@ export default function Login() {
     console.log(response);
     if (response.status === 200) {
       localStorage.setItem("Token", response.data.accessToken);
+      // localStorage.setItem("userdata", response.data);
       setisLoading(false);
       navigate("/home");
     }
