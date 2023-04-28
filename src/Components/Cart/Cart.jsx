@@ -6,15 +6,14 @@ import { userRequest } from "../../requestMethod";
 import { useNavigate, Link } from "react-router-dom";
 // import { addProduct } from "../../Redux/cartRedux";
 
-export default function Cart({ userData }) {
+export default function Cart() {
   const cart = useSelector((state) => state.cart);
   const KEY = process.env.REACT_APP_STRIPE;
   const [stripeToken, setStripeToken] = useState(null);
   const navigate = useNavigate();
   const amount = Math.round(cart.total * 100);
-
   const [quantity, setQuantity] = useState(1);
-  // const dispatch = useDispatch();
+  const userData = localStorage.getItem("Token");
 
   const handleQuantity = (type) => {
     if (type === "inc") {

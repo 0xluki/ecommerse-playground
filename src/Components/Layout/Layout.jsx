@@ -14,7 +14,7 @@ export default function Layout({ userData, setuserData }) {
   return (
     <>
       <Navbar userData={userData} logout={logout} />
-      <Outlet userData={userData}></Outlet>
+      <Outlet></Outlet>
       <Footer />
     </>
   );

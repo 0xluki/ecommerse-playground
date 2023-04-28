@@ -20,7 +20,7 @@ export default function Products({ cat, sort }) {
             ? `http://localhost:5000/api/products/category/${cat}`
             : "http://localhost:5000/api/products"
         );
-        console.log(response);
+        // console.log(response);
         if (cat) {
           setProducts(response.data.products);
         } else {

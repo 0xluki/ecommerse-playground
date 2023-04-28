@@ -2,11 +2,12 @@ import React from "react";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 
-export default function Navbar({ userData, logout }) {
+export default function Navbar({ logout }) {
   const cartQuantity = useSelector((state) => state.cart.cartQuantity);
   const wishlistQuantity = useSelector(
     (state) => state.wishlist.wishlistQuantity
   );
+  const userData = localStorage.getItem("Token");
   // console.log(cartQuantity);
 
   return (

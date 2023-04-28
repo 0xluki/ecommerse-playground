@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import styles from "./Login.module.css";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import axios from "axios";
@@ -31,12 +31,7 @@ export default function Login() {
 
   let validationSchema = Yup.object({
     email: Yup.string().required("Email is requird").email("Email is invalid"),
-    password: Yup.string()
-      .required("Password is requird")
-      .matches(
-        /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/,
-        "Minimum eight characters, at least one letter and one number"
-      ),
+    password: Yup.string().required("Password is requird"),
   });
 
   let formik = useFormik({
@@ -53,7 +48,7 @@ export default function Login() {
         className={`container-fluid d-flex align-items-center justify-content-center ${styles.container}`}
       >
         <div className="col-md-5 mx-auto bg-white p-3">
-          <h4 className="fw-bold text-center">CREATE AN ACCOUNT</h4>
+          <h4 className="fw-bold text-center">LOGIN</h4>
           {messageError ? (
             <div className="alert alert-danger my-2">{messageError}</div>
           ) : null}
@@ -100,11 +95,11 @@ export default function Login() {
               </button>
             )}
           </form>
-          <div>
+          {/* <div>
             <Link className={`${styles.link}`} to={"/forgetPassword"}>
               Forget Password?
             </Link>
-          </div>
+          </div> */}
         </div>
       </div>
     </>

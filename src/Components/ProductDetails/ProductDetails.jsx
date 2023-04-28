@@ -1,5 +1,5 @@
 import React from "react";
-import { images } from "../../data";
+// import { images } from "../../data";
 import Slider from "react-slick";
 import styles from "./ProductDetails.module.css";
 import Announcement from "../Announcement/Announcement";
@@ -57,10 +57,10 @@ export default function ProductDetails() {
         <div className="row py-5 d-flex align-items-center justify-content-center">
           <div className="col-md-4">
             <Slider {...settings}>
-              {images.map((img) => {
+              {product.img.map((img) => {
                 return (
                   <>
-                    <img className="w-100" src={product.img} alt="" />
+                    <img className="w-100" src={img} alt="" />
                   </>
                 );
               })}
