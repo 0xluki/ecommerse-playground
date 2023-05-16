@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import styles from "./Products.module.css";
-// import { popularProducts } from "../../data";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import { addCart } from "../../Redux/cartRedux";
@@ -71,7 +70,7 @@ export default function Products({ cat, sort }) {
                       </div>
                       <div className="text-center mt-2">
                         <p className="m-0 mb-2">{product.title}</p>
-                        <p>{product.price}</p>
+                        <p>{product.price}$</p>
                       </div>
                     </div>
                     <div className={`${styles.layer} `}>

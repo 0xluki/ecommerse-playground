@@ -8,7 +8,6 @@ export default function Navbar({ logout }) {
     (state) => state.wishlist.wishlistQuantity
   );
   const userData = localStorage.getItem("Token");
-  // console.log(cartQuantity);
 
   return (
     <>
@@ -45,7 +44,7 @@ export default function Navbar({ logout }) {
                     </Link>
                   </li>
                   <li className="nav-item ">
-                    <Link className="nav-link " to="wihlist">
+                    <Link className="nav-link " to="wishlist">
                       <i className="fa-solid fa-heart position-relative">
                         <span
                           className={`font8 badge rounded-circle translate-middle position-absolute top-0 start-100 bg-danger`}

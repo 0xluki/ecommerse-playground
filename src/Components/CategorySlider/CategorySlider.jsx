@@ -11,7 +11,7 @@ export default function CategorySlider() {
     const { data } = await axios.get(
       "http://localhost:5000/api/products/categories"
     );
-    console.log(data);
+    // console.log(data);
     setCategories(data.categories);
   }
 

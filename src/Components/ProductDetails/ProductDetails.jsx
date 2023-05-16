@@ -1,8 +1,6 @@
 import React from "react";
-// import { images } from "../../data";
 import Slider from "react-slick";
 import styles from "./ProductDetails.module.css";
-import Announcement from "../Announcement/Announcement";
 import { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import axios from "axios";
@@ -19,23 +17,23 @@ export default function ProductDetails() {
   };
   const location = useLocation();
   const id = location.pathname.split("/")[2];
+  // console.log(id);
   const [product, setProduct] = useState({});
   const [quantity, setQuantity] = useState(1);
   const dispatch = useDispatch();
 
   useEffect(() => {
-    const getProduct = async () => {
+    const getProduct = async (id) => {
       try {
         const res = await axios.get(
-          "http://localhost:5000/api/products/find/" + id
+          `http://localhost:5000/api/products/find/${id}`
         );
-        // console.log(res);
         setProduct(res.data);
       } catch (err) {
         console.log(err);
       }
     };
-    getProduct();
+    getProduct(id);
   }, [id]);
 
   const handleQuantity = (type) => {
@@ -49,15 +47,15 @@ export default function ProductDetails() {
   const handleClick = () => {
     dispatch(addCart({ ...product, quantity }));
   };
+  console.log(product);
 
   return (
     <>
-      <Announcement />
       <div className="container py-5">
         <div className="row py-5 d-flex align-items-center justify-content-center">
           <div className="col-md-4">
             <Slider {...settings}>
-              {product.img.map((img) => {
+              {product?.img?.map((img) => {
                 return (
                   <>
                     <img className="w-100" src={img} alt="" />

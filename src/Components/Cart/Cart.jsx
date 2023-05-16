@@ -4,7 +4,6 @@ import { useSelector } from "react-redux";
 import StripeCheckout from "react-stripe-checkout";
 import { userRequest } from "../../requestMethod";
 import { useNavigate, Link } from "react-router-dom";
-// import { addProduct } from "../../Redux/cartRedux";
 
 export default function Cart() {
   const cart = useSelector((state) => state.cart);
@@ -12,26 +11,11 @@ export default function Cart() {
   const [stripeToken, setStripeToken] = useState(null);
   const navigate = useNavigate();
   const amount = Math.round(cart.total * 100);
-  const [quantity, setQuantity] = useState(1);
   const userData = localStorage.getItem("Token");
-
-  const handleQuantity = (type) => {
-    if (type === "inc") {
-      setQuantity(quantity + 1);
-      // dispatch(addProduct({ quantity }));
-    } else {
-      quantity > 1 && setQuantity(quantity - 1);
-    }
-  };
-
-  // const handleClick = () => {
-  //   dispatch(addProduct({ ...product, quantity }));
-  // };
 
   const onToken = (token) => {
     setStripeToken(token);
   };
-  // console.log(stripeToken);
 
   useEffect(() => {
     const makeRequest = async () => {
@@ -53,7 +37,6 @@ export default function Cart() {
       }
     };
     stripeToken && makeRequest();
-    // stripeToken && cart.total >= 1 && makeRequest();
   }, [stripeToken, amount, navigate, cart]);
 
   return (
@@ -65,11 +48,6 @@ export default function Cart() {
             <Link to={"/home"}>
               <button className={`${styles.button1}`}>CONTINUE SHOPPING</button>
             </Link>
-            {/* <div>
-              <span className="me-3">Shopping Bag (2)</span>
-              <span>Your Wishlist (0)</span>
-            </div>
-            <button className={`${styles.button2}`}>CHECKOUT NOW</button> */}
           </div>
         </div>
         <div className="row p-3">
@@ -88,10 +66,6 @@ export default function Cart() {
                     </div>
                     <div className="col-md-10 d-flex justify-content-between">
                       <div className=" d-flex flex-column justify-content-around">
-                        {/* <h6 className="mb-1">
-                          <b>ID: </b>
-                          {product._id}
-                        </h6> */}
                         <h6 className="mb-1">
                           <b>Product: </b>
                           {product.title}
@@ -107,23 +81,11 @@ export default function Cart() {
                       </div>
                       <div className="d-flex flex-column justify-content-center align-items-center">
                         <div className="d-flex align-items-center mb-3">
-                          <button
-                            onClick={() => handleQuantity("inc")}
-                            className="me-3 fs-5 border-0 bg-white"
-                          >
-                            <i class="fa-solid fa-plus"></i>
-                          </button>
                           <span
                             className={`me-3 fs-6 px-3 py-1 ${styles.amount}`}
                           >
                             {product.quantity}
                           </span>
-                          <button
-                            onClick={() => handleQuantity("dec")}
-                            className="fs-5 border-0 bg-white"
-                          >
-                            <i class="fa-solid fa-minus"></i>
-                          </button>
                         </div>
                         <div>
                           <h5 className="fw-bold">
