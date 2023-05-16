@@ -1,6 +1,8 @@
 import React from "react";
 import styles from "./MainSlider.module.css";
-import { sliderItems } from "../../data";
+import img1 from "../../Assets/1.png";
+import img2 from "../../Assets/2.png";
+import img3 from "../../Assets/3.png";
 
 export default function MainSlider() {
   return (
@@ -8,61 +10,56 @@ export default function MainSlider() {
       <div>
         <div
           id="carouselExample"
-          className={`carousel slide ${styles.mainSlider}`}
+          className={`carousel slide pt-5 ${styles.mainSlider}`}
         >
           <div className="carousel-inner w-100 h-100">
             <div
-              className={`w-100 h-100 carousel-item active ${styles.carouselItem1}`}
+              className={`w-100 h-100 carousel-item active px-md-5`}
             >
-              <div className="row px-5 w-100 h-100 d-flex align-items-center justify-content-center">
-                <div className="col-sm-6 col-5">
-                  <img
-                    className={`${styles.img}`}
-                    src={sliderItems[2].img}
-                    alt=""
-                  />
+              <div className="row p-5 w-100 h-100 d-flex align-items-center justify-content-center">
+                <div className="col-6">
+                  <img className={`${styles.img}`} src={img1} alt="" />
                 </div>
-                <div className="col-sm-6 col-7">
-                  <h1 className={`${styles.title}`}>{sliderItems[0].title}</h1>
-                  <p className={`${styles.desc}`}>{sliderItems[0].desc}</p>
+                <div className="col-5 offset-1">
+                  <h3 className={`${styles.title}`}>Abkoncore hr120</h3>
+                  <p className={`${styles.desc}`}>
+                    3 SYNC ARGB Fans <br></br>+ Remote Controller
+                  </p>
                   <button className={`${styles.button}`}>SHOP NOW</button>
                 </div>
               </div>
             </div>
 
             <div
-              className={`w-100 h-100 carousel-item ${styles.carouselItem2}`}
+              className={`w-100 h-100 carousel-item px-md-5`}
             >
-              <div className="row px-5 w-100 h-100 d-flex align-items-center justify-content-center">
+              <div className="row p-5 w-100 h-100 d-flex align-items-center justify-content-center">
                 <div className="col-6">
-                  <img
-                    className={`${styles.img}`}
-                    src={sliderItems[2].img}
-                    alt=""
-                  />
+                  <img className={`${styles.img}`} src={img2} alt="" />
                 </div>
-                <div className="col-6">
-                  <h1 className={`${styles.title}`}>{sliderItems[1].title}</h1>
-                  <p className={`${styles.desc}`}>{sliderItems[1].desc}</p>
+                <div className="col-5 offset-1">
+                  <h3 className={`${styles.title}`}>Abkoncore h450x</h3>
+                  <p className={`${styles.desc}`}>
+                    {" "}
+                    Middle Tower Case <br></br>+ 4 RGB Fan + PSU 700W
+                  </p>
                   <button className={`${styles.button}`}>SHOP NOW</button>
                 </div>
               </div>
             </div>
 
             <div
-              className={`w-100 h-100 carousel-item ${styles.carouselItem3}`}
+              className={`w-100 h-100 carousel-item px-md-5`}
             >
-              <div className="row px-5 w-100 h-100 d-flex align-items-center justify-content-center">
+              <div className="row p-5 w-100 h-100 d-flex align-items-center justify-content-center">
                 <div className="col-6">
-                  <img
-                    className={`${styles.img}`}
-                    src={sliderItems[2].img}
-                    alt=""
-                  />
+                  <img className={`${styles.img}`} src={img3} alt="" />
                 </div>
-                <div className="col-6">
-                  <h1 className={`${styles.title}`}>{sliderItems[2].title}</h1>
-                  <p className={`${styles.desc}`}>{sliderItems[2].desc}</p>
+                <div className="col-5 offset-1">
+                  <h3 className={`${styles.title}`}>Msi ds502</h3>
+                  <p className={`${styles.desc}`}>
+                    Surround Virtual 7.1 Gaming Headset{" "}
+                  </p>
                   <button className={`${styles.button}`}>SHOP NOW</button>
                 </div>
               </div>

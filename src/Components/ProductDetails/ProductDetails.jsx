@@ -47,7 +47,7 @@ export default function ProductDetails() {
   const handleClick = () => {
     dispatch(addCart({ ...product, quantity }));
   };
-  console.log(product);
+  // console.log(product);
 
   return (
     <>
@@ -67,7 +67,7 @@ export default function ProductDetails() {
           <div className="offset-md-1 col-md-7 gy-4 ">
             <h4 className="fw-bold">{product.title}</h4>
             <p>{product.desc}</p>
-            <p className="fs-3">{product.price}</p>
+            <p className="fs-3">{product.price}$</p>
             <div className="mt-3 w-75 d-flex align-items-center justify-content-between  mx-auto mx-md-0">
               <div className="d-flex align-items-center ">
                 <button

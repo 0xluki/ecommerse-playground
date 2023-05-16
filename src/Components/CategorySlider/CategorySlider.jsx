@@ -34,7 +34,7 @@ export default function CategorySlider() {
           {categories.map((category) => {
             return (
               <>
-                <div className="row py-3">
+                <div key={category._id} className="row py-3">
                   <Link
                     className="link"
                     to={`/productList/${category.categoryType}`}

@@ -58,7 +58,10 @@ export default function Products({ cat, sort }) {
           {products.map((product) => {
             return (
               <>
-                <div key={product.id} className={`col-md-3 col-sm-6 px-2 py-2`}>
+                <div
+                  key={product._id}
+                  className={`col-md-3 col-sm-6 px-2 py-2`}
+                >
                   <div className={`position-relative ${styles.item} py-2`}>
                     <div>
                       <div>

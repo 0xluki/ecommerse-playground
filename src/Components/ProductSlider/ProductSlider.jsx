@@ -39,6 +39,8 @@ export default function Products() {
     slidesToScroll: 1,
   };
 
+  // console.log(products);
+
   return (
     <>
       <div className="container-fluid p-5">
@@ -48,19 +50,19 @@ export default function Products() {
             return (
               <>
                 <div className="row px-3 py-4">
-                  <div key={product.id}>
+                  <div key={product._id}>
                     <div className={`position-relative ${styles.item} py-2`}>
                       <div>
                         <div>
                           <img
                             className={`${styles.img} w-100`}
-                            src={product.img}
+                            src={product.img[0]}
                             alt=""
                           />
                         </div>
                         <div className="text-center mt-2">
                           <p className="m-0 mb-2">{product.title}</p>
-                          <p>{product.price}</p>
+                          <p>{product.price}$</p>
                         </div>
                       </div>
                       <div className={`${styles.layer} `}>
