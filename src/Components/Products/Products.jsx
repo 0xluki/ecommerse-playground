@@ -67,7 +67,7 @@ export default function Products({ cat, sort }) {
                       <div>
                         <img
                           className={`${styles.img} w-100`}
-                          src={product.img}
+                          src={product.img[0]}
                           alt=""
                         />
                       </div>
