@@ -58,14 +58,6 @@ function App() {
           path: "product/:id",
           element: <ProductDetails />,
         },
-        // {
-        //   path: "wishlist",
-        //   element: (
-        //     <ProtectedRoute>
-        //       <Wishlist />
-        //     </ProtectedRoute>
-        //   ),
-        // },
         {
           path: "wishlist",
           element: <Wishlist />,

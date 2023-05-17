@@ -3,6 +3,7 @@ import styles from "./MainSlider.module.css";
 import img1 from "../../Assets/1.png";
 import img2 from "../../Assets/2.png";
 import img3 from "../../Assets/3.png";
+import { Link } from "react-router-dom";
 
 export default function MainSlider() {
   return (
@@ -13,9 +14,7 @@ export default function MainSlider() {
           className={`carousel slide pt-5 ${styles.mainSlider}`}
         >
           <div className="carousel-inner w-100 h-100">
-            <div
-              className={`w-100 h-100 carousel-item active px-md-5`}
-            >
+            <div className={`w-100 h-100 carousel-item active px-md-5`}>
               <div className="row p-5 w-100 h-100 d-flex align-items-center justify-content-center">
                 <div className="col-6">
                   <img className={`${styles.img}`} src={img1} alt="" />
@@ -25,14 +24,17 @@ export default function MainSlider() {
                   <p className={`${styles.desc}`}>
                     3 SYNC ARGB Fans <br></br>+ Remote Controller
                   </p>
-                  <button className={`${styles.button}`}>SHOP NOW</button>
+                  <Link
+                    className="link"
+                    to={`/product/646407db0cc26a78cd71a6a4`}
+                  >
+                    <button className={`${styles.button}`}>SHOP NOW</button>
+                  </Link>
                 </div>
               </div>
             </div>
 
-            <div
-              className={`w-100 h-100 carousel-item px-md-5`}
-            >
+            <div className={`w-100 h-100 carousel-item px-md-5`}>
               <div className="row p-5 w-100 h-100 d-flex align-items-center justify-content-center">
                 <div className="col-6">
                   <img className={`${styles.img}`} src={img2} alt="" />
@@ -43,14 +45,17 @@ export default function MainSlider() {
                     {" "}
                     Middle Tower Case <br></br>+ 4 RGB Fan + PSU 700W
                   </p>
-                  <button className={`${styles.button}`}>SHOP NOW</button>
+                  <Link
+                    className="link"
+                    to={`/product/6463f6ed0cc26a78cd71a67c`}
+                  >
+                    <button className={`${styles.button}`}>SHOP NOW</button>
+                  </Link>
                 </div>
               </div>
             </div>
 
-            <div
-              className={`w-100 h-100 carousel-item px-md-5`}
-            >
+            <div className={`w-100 h-100 carousel-item px-md-5`}>
               <div className="row p-5 w-100 h-100 d-flex align-items-center justify-content-center">
                 <div className="col-6">
                   <img className={`${styles.img}`} src={img3} alt="" />
@@ -60,7 +65,12 @@ export default function MainSlider() {
                   <p className={`${styles.desc}`}>
                     Surround Virtual 7.1 Gaming Headset{" "}
                   </p>
-                  <button className={`${styles.button}`}>SHOP NOW</button>
+                  <Link
+                    className="link"
+                    to={`/product/646405420cc26a78cd71a6a0`}
+                  >
+                    <button className={`${styles.button}`}>SHOP NOW</button>
+                  </Link>
                 </div>
               </div>
             </div>

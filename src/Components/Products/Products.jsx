@@ -33,11 +33,7 @@ export default function Products({ cat, sort }) {
   }, [cat]);
 
   useEffect(() => {
-    if (sort === "newest") {
-      setProducts((prev) =>
-        [...prev].sort((a, b) => a.createdAt - b.createdAt)
-      );
-    } else if (sort === "asc") {
+    if (sort === "asc") {
       setProducts((prev) => [...prev].sort((a, b) => a.price - b.price));
     } else {
       setProducts((prev) => [...prev].sort((a, b) => b.price - a.price));

@@ -19,7 +19,7 @@ export default function ProductList() {
               onChange={(e) => setSort(e.target.value)}
             >
               <option selected value="newest">
-                Newest
+                Sort by price
               </option>
               <option value="asc"> Price (asc)</option>
               <option value="desc"> Price (desc)</option>

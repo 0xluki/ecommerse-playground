@@ -39,16 +39,17 @@ export default function CategorySlider() {
                     className="link"
                     to={`/productList/${category.categoryType}`}
                   >
-                    <div key={category._id}>
+                    <div
+                      className="d-flex flex-column align-items-center"
+                      key={category._id}
+                    >
                       <img
-                        className="w-100"
+                        className="w-75"
                         height={200}
                         src={category.img}
                         alt=""
                       />
-                      <h2 className="h6 pt-2 text-center">
-                        {category.categoryType}
-                      </h2>
+                      <h2 className="h6 pt-2">{category.categoryType}</h2>
                     </div>
                   </Link>
                 </div>

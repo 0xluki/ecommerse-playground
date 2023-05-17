@@ -9,8 +9,6 @@ const wishlistSlice = createSlice({
   },
   reducers: {
     addWishlist: (state, action) => {
-      // console.log(action.payload);
-
       state.exist = state.products.find((product) => {
         return product._id === action.payload._id;
       });
@@ -18,7 +16,6 @@ const wishlistSlice = createSlice({
         state.wishlistQuantity += 1;
         state.products.push(action.payload);
       }
-      // console.log(state.products);
     },
   },
 });

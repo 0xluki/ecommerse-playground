@@ -28,7 +28,7 @@ export default function Wishlist() {
                       <img
                         height={135}
                         className="w-100"
-                        src={product.img}
+                        src={product.img[0]}
                         alt=""
                       />
                     </div>
