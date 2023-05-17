@@ -4,6 +4,8 @@ import { useSelector } from "react-redux";
 import StripeCheckout from "react-stripe-checkout";
 import { userRequest } from "../../requestMethod";
 import { useNavigate, Link } from "react-router-dom";
+import { clearCart } from "../../Redux/cartRedux";
+import { useDispatch } from "react-redux";
 
 export default function Cart() {
   const cart = useSelector((state) => state.cart);
@@ -12,6 +14,11 @@ export default function Cart() {
   const navigate = useNavigate();
   const amount = Math.round(cart.total * 100);
   const userData = localStorage.getItem("Token");
+  const dispatch = useDispatch();
+
+  const handleCart = () => {
+    dispatch(clearCart());
+  };
 
   const onToken = (token) => {
     setStripeToken(token);
@@ -145,6 +152,13 @@ export default function Cart() {
               )}
             </div>
           </div>
+
+          <button
+            onClick={handleCart}
+            className={`${styles.button1} w-25 mx-auto my-3`}
+          >
+            Clear Cart
+          </button>
         </div>
       </div>
     </>

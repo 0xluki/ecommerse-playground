@@ -2,10 +2,16 @@ import React from "react";
 import styles from "./Wishlist.module.css";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import { clearWishlist } from "../../Redux/wishlistRedux";
+import { useDispatch } from "react-redux";
 
 export default function Wishlist() {
   const wishlist = useSelector((state) => state.wishlist);
-  // console.log(wishlist);
+  const dispatch = useDispatch();
+
+  const handleCart = () => {
+    dispatch(clearWishlist());
+  };
 
   return (
     <>
@@ -61,6 +67,12 @@ export default function Wishlist() {
             })}
           </div>
         </div>
+        <button
+          onClick={handleCart}
+          className={`${styles.button1} w-25 mx-auto my-3`}
+        >
+          Clear Wishlist
+        </button>
       </div>
     </>
   );
